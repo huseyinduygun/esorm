@@ -18,6 +18,7 @@ class Grammar {
         'sort'    => 'orders',
         'from'    => 'offset',
         'size'    => 'limit',
+        'search_after'    => 'after',
     ];
 
     /**
@@ -351,6 +352,11 @@ class Grammar {
         }
 
         return $orders;
+    }
+
+    public function compileAfter (Query $query): array {
+
+        return [$query->after];
     }
 
     /**
