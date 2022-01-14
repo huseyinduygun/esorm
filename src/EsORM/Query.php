@@ -41,6 +41,8 @@ class Query {
      */
     public int $limit;
 
+    public int $after;
+
     /**
      * @var array
      */
@@ -673,6 +675,14 @@ class Query {
     public function limit (int $value): self {
         if ($value >= 0) {
             $this->limit = $value;
+        }
+
+        return $this;
+    }
+
+    public function after (int $value): self {
+        if ($value >= 0) {
+            $this->after = $value;
         }
 
         return $this;
