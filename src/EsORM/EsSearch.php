@@ -73,7 +73,7 @@ class EsSearch {
 
         $this->client = $this->newElasticSearchClient();
 
-        $this->query = $this->newQuery();
+        
     }
 
     private function __clone () { }
@@ -467,6 +467,9 @@ class EsSearch {
      * @throws Exception
      */
     public function __call (string $name, array $arguments) {
+        if($name == 'index'){
+            $this->query = $this->newQuery();
+        }
         if (!method_exists($this->query, $name)) {
             throw new Exception(sprintf("方法：%s 不存在", $name));
         }
